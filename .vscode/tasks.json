@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "test",
+			"group": {
+				"kind": "test",
+				"isDefault": true
+			},
+			"isBackground": true,
+			"icon": {
+				"id": "beaker",
+				"color": "terminal.ansiCyan"
+			},
+			"problemMatcher": [
+				
+			],
+			"label": "Test",
+			"detail": "Run the node test script"
+		}
+	]
+}

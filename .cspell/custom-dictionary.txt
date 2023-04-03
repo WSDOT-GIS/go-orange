@@ -1,0 +1,7 @@
+# Custom Dictionary Words
+MUTCD
+NWZA
+NWZAM
+NWZAW
+WZAM
+Yeung
