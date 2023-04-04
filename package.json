@@ -19,6 +19,9 @@
     ".": "./index.js"
   },
   "icon": "./MUTCD_CW21-1.png",
+  "repository": "github:WSDOT-GIS/go-orange",
+  "homepage": "https://github.com/WSDOT-GIS/go-orange#readme",
+  "bugs": "https://github.com/WSDOT-GIS/go-orange/issues",
   "scripts": {
     "test": "node test.mjs",
     "coverage": "npx c8 node ./test.mjs",
