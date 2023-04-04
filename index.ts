@@ -113,4 +113,4 @@ export function isWorkZoneAwarenessMonth(
   return inputMonth === wzaMonth;
 }
 
-export default isWorkZoneAwarenessWeek
+export default isWorkZoneAwarenessWeek;
