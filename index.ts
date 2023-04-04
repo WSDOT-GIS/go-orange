@@ -13,7 +13,7 @@ export type WeekOfMonth = 0 | 1 | 2 | 3 | 4 | 5;
 
 /**
  * A mapping of the days of the week to their
- * numeric value as returned by {@link Date.prototype.getDay()}
+ * numeric value as returned by {@link Date.prototype.getDay}
  */
 export const daysOfTheWeekMap = new Map(
   [
@@ -79,7 +79,7 @@ export function isWeekend(date: Date) {
  * @returns A boolean indicating if it is indeed Work Zone awareness week.
  */
 export function isWorkZoneAwarenessWeek(
-  inputDate: Date,
+  inputDate: Date = new Date(),
   wzaMonth: Month = defaultWorkZoneAwarenessMonth,
   wzaWeek = defaultWorkZoneAwarenessWeek,
   omitWeekends = true
@@ -106,7 +106,7 @@ export function isWorkZoneAwarenessWeek(
  * @returns A boolean indicating if it is indeed Work Zone Awareness Month.
  */
 export function isWorkZoneAwarenessMonth(
-  inputDate: Date,
+  inputDate: Date = new Date(),
   wzaMonth: Month = defaultWorkZoneAwarenessMonth
 ) {
   const inputMonth = inputDate.getMonth() + 1;

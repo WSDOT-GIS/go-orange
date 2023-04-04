@@ -1,7 +1,13 @@
 /* eslint-env: node */
 
 import { equal } from "node:assert/strict";
-import { isWorkZoneAwarenessMonth, isWorkZoneAwarenessWeek } from "./index.js";
+import {
+  isWorkZoneAwarenessMonth,
+  isWorkZoneAwarenessWeek,
+  defaultWorkZoneAwarenessMonth,
+  getWeekOfTheMonth,
+  defaultWorkZoneAwarenessWeek
+} from "./index.js";
 
 /**
  * Enumerates through a range of numbers from {@link start} to {@link end}, inclusively.
@@ -22,32 +28,71 @@ const nwzaw2023Dates = [...getAllNumbersInRange(17, 21)].map(
   (d) => new Date(2023, 4 - 1, d)
 );
 
-function* testItems(datesToTest: Date[]) {
-  for (const d of datesToTest) {
+const failDates = [
+  new Date(2023, 1 - 1, 1),
+  new Date(2023, 4 - 1, 1),
+  new Date(2023, 4 - 1, 4),
+  new Date(2023, 3 - 1, 21),
+]
+
+interface TestResult {
+  date: Date;
+  formattedDate: string;
+  monthResult: boolean;
+  weekResult: boolean;
+  monthExpected: boolean;
+  weekExpected: boolean;
+}
+
+function* testItems(
+  datesToTest: Iterable<Date>
+): Generator<TestResult, void, unknown> {
+  for (const currentTestDate of datesToTest) {
+    const monthExpected = currentTestDate.getMonth() === defaultWorkZoneAwarenessMonth - 1;
+    const weekExpected = monthExpected && getWeekOfTheMonth(currentTestDate) === defaultWorkZoneAwarenessWeek;
     yield {
-      date: d,
-      "Formatted date": d.toLocaleDateString(undefined, {
+      date: currentTestDate,
+      formattedDate: currentTestDate.toLocaleDateString("en-US", {
         dateStyle: "full",
       }),
-      "month test": isWorkZoneAwarenessMonth(d),
-      "week test": isWorkZoneAwarenessWeek(d),
+      monthResult: isWorkZoneAwarenessMonth(currentTestDate),
+      weekResult: isWorkZoneAwarenessWeek(currentTestDate),
+      monthExpected,
+      weekExpected,
     };
   }
 }
 
-const tests = testItems(nwzaw2023Dates);
+const testResults = testItems(nwzaw2023Dates.concat(...failDates));
 
-console.table([...tests]);
+// Write out to console as a table.
+console.table(
+  [...testResults],
+  [
+    "formattedDate",
+    "monthResult",
+    "weekResult",
+    "monthExpected",
+    "weekExpected",
+  ]
+);
 
-for (const date of nwzaw2023Dates) {
+for (const {
+  // date,
+  formattedDate,
+  monthResult,
+  weekResult,
+  weekExpected,
+  monthExpected,
+} of testResults) {
   equal(
-    isWorkZoneAwarenessMonth(date),
-    true,
-    `${date.toLocaleDateString()} should be detected as being in National Work Zone Awareness Month`
+    monthResult,
+    monthExpected,
+    `${formattedDate} should be detected as being in National Work Zone Awareness Month`
   );
   equal(
-    isWorkZoneAwarenessWeek(date),
-    true,
-    `${date.toLocaleDateString()} should be detected as being in National Work Zone Awareness Week`
+    weekResult,
+    weekExpected,
+    `${formattedDate} should be detected as being in National Work Zone Awareness Week`
   );
 }

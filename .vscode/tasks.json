@@ -13,11 +13,25 @@
 				"id": "beaker",
 				"color": "terminal.ansiCyan"
 			},
-			"problemMatcher": [
-				
-			],
+			"problemMatcher": [],
 			"label": "Test",
 			"detail": "Run the node test script"
+		},
+		{
+			"type": "npm",
+			"script": "watch",
+			"group": "build",
+			"promptOnClose": false,
+			"problemMatcher": [
+				"$tsc-watch"
+			],
+			"icon": {
+				"id": "eye-watch",
+				"color": "terminal.ansiGreen"
+			},
+			"isBackground": true,
+			"label": "watch",
+			"detail": "Run TypeScript compiler in watch mode"
 		}
 	]
 }
