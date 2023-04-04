@@ -12,7 +12,8 @@
     "index.js",
     "index.d.ts",
     "index.js.map",
-    "MUTCD_CW21-1.png"
+    "MUTCD_CW21-1.png",
+    "docs/*"
   ],
   "module": "./index.js",
   "exports": {
@@ -28,7 +29,11 @@
     "prepare": "npm run build",
     "watch": "tsc -w",
     "docs": "npx typedoc index.ts",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "prepack": "npm run docs"
+  },
+  "directories": {
+    "doc": "docs"
   },
   "author": "Jeff Jacobson",
   "license": "Unlicense",
