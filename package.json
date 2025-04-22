@@ -1,6 +1,6 @@
 {
   "name": "@wsdot/go-orange",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Determines if a website should be using \"Go Orange\" theming for National Work Zone Awareness Week (NWZAW).",
   "type": "module",
   "main": "index.js",
