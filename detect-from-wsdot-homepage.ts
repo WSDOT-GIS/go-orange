@@ -1,11 +1,12 @@
 /**
  * Detects if the WSDOT Website is currently "going orange for safety" by fetching the homepage
  * and looking for a link ending with "give-em-brake" or an element with the text "We're orange for safety".
+ * @param url - The URL of the WSDOT homepage.
  * @returns True if a "go orange" link is found, false otherwise.
  */
-async function detectGoOrangeViaWsdotHomepage() {
+export async function detectGoOrangeViaWsdotHomepage(url: string | URL = "https://wsdot.wa.gov/") {
 	// Fetch the WSDOT homepage.
-	const response = await fetch("https://wsdot.wa.gov/");
+	const response = await fetch(url);
 	const html = await response.text();
 
 	// Parse the HTML text into a Document via a DOMParser.
