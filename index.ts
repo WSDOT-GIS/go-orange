@@ -13,7 +13,7 @@ export type WeekOfMonth = 0 | 1 | 2 | 3 | 4 | 5;
 
 /**
  * A mapping of the days of the week to their
- * numeric value as returned by {@link Date.prototype.getDay}
+ * numeric value as returned by {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getDay | Date.prototype.getDay}
  */
 export const daysOfTheWeekMap = new Map(
   [

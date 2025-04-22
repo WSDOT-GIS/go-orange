@@ -3,10 +3,8 @@
   "workspaces": {
     "": {
       "name": "@wsdot/go-orange",
-      "dependencies": {
-        "@biomejs/biome": "^1.9.4",
-      },
       "devDependencies": {
+        "@biomejs/biome": "^1.9.4",
         "@types/bun": "^1.2.10",
         "@types/node": "^22.14.1",
         "c8": "^10.1.3",

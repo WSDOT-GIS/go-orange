@@ -1,4 +1,5 @@
 # Custom Dictionary Words
+bunx
 MUTCD
 NWZA
 NWZAM
