@@ -200,3 +200,4 @@ $RECYCLE.BIN/
 *.d.mts.map
 *.d.ts.map
 docs/
+.qodo
